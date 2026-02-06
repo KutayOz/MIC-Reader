@@ -1,0 +1,123 @@
+{
+  "@@locale": "en",
+  "appTitle": "MIC Reader",
+  "@appTitle": {
+    "description": "The application title"
+  },
+
+  "welcome": "Welcome",
+  "welcomeBack": "Welcome back, {name}",
+  "@welcomeBack": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "onboardingTitle": "Welcome to MIC Reader",
+  "onboardingSubtitle": "Antifungal susceptibility testing made easy",
+  "enterYourName": "Enter your name",
+  "nameHint": "Dr. Name Surname",
+  "institution": "Institution (optional)",
+  "institutionHint": "Hospital/Laboratory name",
+  "selectLanguage": "Select language",
+  "getStarted": "Get Started",
+
+  "home": "Home",
+  "capture": "Capture",
+  "history": "History",
+  "settings": "Settings",
+
+  "newAnalysis": "New Analysis",
+  "recentResults": "Recent Results",
+  "viewAllHistory": "View All History",
+  "noRecentResults": "No recent results",
+
+  "capturePlate": "Capture Plate",
+  "flashOn": "Flash On",
+  "flashOff": "Flash Off",
+  "captureHint": "Align the plate within the guide and tap capture",
+  "flashWarning": "Keep flash ON for best results",
+  "rotatePhone": "Rotate your phone to landscape",
+  "rotatePhoneHint": "Hold your phone horizontally to capture the plate",
+  "fromGallery": "From Gallery",
+  "fromCamera": "From Camera",
+  "chooseSource": "Choose Image Source",
+  "alignPlateHint": "Fit the plate in the frame",
+
+  "analyzing": "Analyzing...",
+  "analysisResults": "Analysis Results",
+  "selectOrganism": "Select Organism",
+  "micResults": "MIC Results",
+  "drug": "Drug",
+  "micValue": "MIC (mg/L)",
+  "interpretation": "Interpretation",
+  "susceptible": "Susceptible",
+  "intermediate": "Intermediate",
+  "resistant": "Resistant",
+  "insufficientEvidence": "IE",
+
+  "growth": "Growth",
+  "inhibition": "Inhibition",
+  "partial": "Partial",
+  "uncertain": "Uncertain",
+  "needsReview": "Needs Review",
+  "manuallyEdited": "Edited",
+  "tapToEdit": "Tap well to edit",
+
+  "editWells": "Edit Wells",
+  "changeColor": "Change to:",
+  "recalculateMic": "Recalculate MIC",
+  "done": "Done",
+
+  "save": "Save",
+  "share": "Share",
+  "export": "Export",
+  "delete": "Delete",
+
+  "shareResults": "Share Results",
+  "exportFormat": "Export Format",
+  "pdfReport": "PDF Report",
+  "pdfReportDesc": "Full report with plate image and all results",
+  "imageSummary": "Image + Summary",
+  "imageSummaryDesc": "Annotated plate image with text summary",
+  "textOnly": "Text Only",
+  "textOnlyDesc": "Plain text results for quick sharing",
+  "includeInExport": "Include in export:",
+  "analystName": "Analyst name",
+  "timestamp": "Timestamp",
+  "rawConfidence": "Raw confidence values",
+  "shareVia": "Share via...",
+
+  "settingsTitle": "Settings",
+  "profile": "Profile",
+  "editProfile": "Edit Profile",
+  "defaultOrganism": "Default Organism",
+  "language": "Language",
+  "about": "About",
+  "version": "Version",
+
+  "disclaimer": "Results are for guidance only. Manual verification is recommended.",
+  "controlWellWarning": "Control well (K) should show growth (pink). If not, repeat the test.",
+  "positiveControl": "Positive Control (K)",
+
+  "error": "Error",
+  "retry": "Retry",
+  "cancel": "Cancel",
+  "ok": "OK",
+  "confirm": "Confirm",
+  "deleteConfirm": "Are you sure you want to delete this analysis?",
+
+  "cameraPermissionDenied": "Camera permission is required to capture plates",
+  "storagePermissionDenied": "Storage permission is required to save results",
+  "grantPermission": "Grant Permission",
+
+  "autoSave": "Auto-save",
+  "autoSaveDescription": "Automatically save analysis results after processing",
+  "analysisSavedAuto": "Analysis saved automatically",
+
+  "patientName": "Patient Name",
+  "patientNameHint": "Enter patient name (optional)",
+  "editPatientName": "Edit Patient Name"
+}
