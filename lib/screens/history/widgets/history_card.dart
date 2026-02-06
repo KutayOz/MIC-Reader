@@ -10,14 +10,12 @@ import '../../../data/models/models.dart';
 class HistoryCard extends StatelessWidget {
   final PlateAnalysis analysis;
   final VoidCallback onTap;
-  final VoidCallback onDelete;
   final VoidCallback? onEditPatientName;
 
   const HistoryCard({
     super.key,
     required this.analysis,
     required this.onTap,
-    required this.onDelete,
     this.onEditPatientName,
   });
 
@@ -134,35 +132,19 @@ class HistoryCard extends StatelessWidget {
                 ),
               ),
 
-              // Action buttons
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (onEditPatientName != null)
-                    IconButton(
-                      onPressed: onEditPatientName,
-                      icon: const Icon(Icons.edit_outlined),
-                      iconSize: 20,
-                      color: AppColors.primary,
-                      tooltip: 'Edit patient name',
-                      constraints: const BoxConstraints(
-                        minWidth: 36,
-                        minHeight: 36,
-                      ),
-                    ),
-                  IconButton(
-                    onPressed: onDelete,
-                    icon: const Icon(Icons.delete_outline),
-                    iconSize: 20,
-                    color: AppColors.textSecondary,
-                    tooltip: 'Delete',
-                    constraints: const BoxConstraints(
-                      minWidth: 36,
-                      minHeight: 36,
-                    ),
+              // Action button
+              if (onEditPatientName != null)
+                IconButton(
+                  onPressed: onEditPatientName,
+                  icon: const Icon(Icons.edit_outlined),
+                  iconSize: 20,
+                  color: AppColors.primary,
+                  tooltip: 'Edit patient name',
+                  constraints: const BoxConstraints(
+                    minWidth: 36,
+                    minHeight: 36,
                   ),
-                ],
-              ),
+                ),
             ],
           ),
         ),

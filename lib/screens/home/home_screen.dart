@@ -248,6 +248,8 @@ class _HomeTab extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (_) => AnalysisScreen(
                               imagePath: analysis.imagePath,
+                              existingAnalysis: analysis,
+                              patientName: analysis.notes,
                             ),
                           ),
                         );

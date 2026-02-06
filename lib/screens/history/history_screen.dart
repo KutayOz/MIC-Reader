@@ -123,11 +123,53 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   itemCount: provider.analyses.length,
                   itemBuilder: (context, index) {
                     final analysis = provider.analyses[index];
-                    return HistoryCard(
-                      analysis: analysis,
-                      onTap: () => _openAnalysis(analysis),
-                      onDelete: () => _confirmDelete(analysis),
-                      onEditPatientName: () => _editPatientName(analysis),
+                    return Dismissible(
+                      key: Key(analysis.id),
+                      direction: DismissDirection.endToStart,
+                      background: Container(
+                        alignment: Alignment.centerRight,
+                        padding: const EdgeInsets.only(right: 24),
+                        margin: const EdgeInsets.only(bottom: 12),
+                        decoration: BoxDecoration(
+                          color: AppColors.danger,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(
+                          Icons.delete_outline,
+                          color: Colors.white,
+                          size: 28,
+                        ),
+                      ),
+                      confirmDismiss: (direction) async {
+                        return await showDialog<bool>(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                            title: Text(l10n.delete),
+                            content: Text(l10n.deleteConfirm),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(ctx, false),
+                                child: Text(l10n.cancel),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(ctx, true),
+                                style: TextButton.styleFrom(
+                                  foregroundColor: AppColors.danger,
+                                ),
+                                child: Text(l10n.delete),
+                              ),
+                            ],
+                          ),
+                        ) ?? false;
+                      },
+                      onDismissed: (direction) {
+                        provider.delete(analysis.id);
+                      },
+                      child: HistoryCard(
+                        analysis: analysis,
+                        onTap: () => _openAnalysis(analysis),
+                        onEditPatientName: () => _editPatientName(analysis),
+                      ),
                     );
                   },
                 );
@@ -142,33 +184,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
   void _openAnalysis(PlateAnalysis analysis) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => AnalysisScreen(imagePath: analysis.imagePath),
-      ),
-    );
-  }
-
-  void _confirmDelete(PlateAnalysis analysis) {
-    final l10n = AppLocalizations.of(context)!;
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(l10n.delete),
-        content: Text(l10n.deleteConfirm),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(l10n.cancel),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              context.read<HistoryProvider>().delete(analysis.id);
-            },
-            style: TextButton.styleFrom(foregroundColor: AppColors.danger),
-            child: Text(l10n.delete),
-          ),
-        ],
+        builder: (_) => AnalysisScreen(
+          imagePath: analysis.imagePath,
+          existingAnalysis: analysis,
+          patientName: analysis.notes,
+        ),
       ),
     );
   }

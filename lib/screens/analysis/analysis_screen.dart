@@ -15,11 +15,13 @@ import 'widgets/mic_results_table.dart';
 class AnalysisScreen extends StatefulWidget {
   final String imagePath;
   final String? patientName;
+  final PlateAnalysis? existingAnalysis;
 
   const AnalysisScreen({
     super.key,
     required this.imagePath,
     this.patientName,
+    this.existingAnalysis,
   });
 
   @override
@@ -36,7 +38,28 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
   @override
   void initState() {
     super.initState();
-    _analyzeImage();
+    if (widget.existingAnalysis != null) {
+      _loadExistingAnalysis();
+    } else {
+      _analyzeImage();
+    }
+  }
+
+  /// Load an existing analysis from history (no re-analysis, no auto-save)
+  void _loadExistingAnalysis() {
+    final existing = widget.existingAnalysis!;
+    // Restore organism selection from saved data
+    final savedOrganism = Organism.values.where(
+      (o) => o.fullName == existing.organism,
+    );
+    if (savedOrganism.isNotEmpty) {
+      _selectedOrganism = savedOrganism.first;
+    }
+    setState(() {
+      _analysis = existing;
+      _isLoading = false;
+      _hasAutoSaved = true; // Prevent re-saving
+    });
   }
 
   Future<void> _analyzeImage() async {
